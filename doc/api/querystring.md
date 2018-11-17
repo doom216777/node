@@ -76,10 +76,11 @@ alternative `decodeURIComponent` option will need to be specified:
 
 ```js runkit
 const querystring = require('querystring');
-const urlcharset = require('urlcharset'); // 3rd party library that provides a decodeURIComponent implementation
+// 3rd party library that provides a decodeURIComponent implementation
+const { decodeUriComponent } = require('urlcharset');
 
 querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
-                  { decodeURIComponent: urlcharset.decodeUriComponent('gbk') });
+                  { decodeURIComponent: decodeUriComponent('gbk') });
 ```
 
 ## querystring.stringify(obj[, sep[, eq[, options]]])
@@ -120,10 +121,11 @@ be encoded as UTF-8. If an alternative encoding is required, then an alternative
 
 ```js runkit
 const querystring = require('querystring');
-const urlcharset = require('urlcharset'); // 3rd party library that provides an encodeURIComponent implementation
+// 3rd party library that provides an encodeURIComponent implementation
+const { encodeUriComponent } = require('urlcharset');
 
 querystring.stringify({ w: '中文', foo: 'bar' }, null, null,
-                      { encodeURIComponent: urlcharset.encodeUriComponent('gbk') });
+                      { encodeURIComponent: encodeUriComponent('gbk') });
 ```
 
 ## querystring.unescape(str)
